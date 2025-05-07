@@ -32,7 +32,7 @@ const LeadGeneration = () => {
             <Box
                 sx={{
                     width: '100%',
-                    maxWidth: 800,
+                    maxWidth: 600,
                     bgcolor: 'white',
                     p: 4,
                     display: 'flex',
