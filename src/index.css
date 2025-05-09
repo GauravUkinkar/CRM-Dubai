@@ -1,7 +1,30 @@
+/* index.css or global.css */
+@import "tailwindcss";
+
+
 *, *::after, *::before{
     padding: 0;
     margin:0;
     box-sizing: border-box;
 
 }
+
+.MuiFormControl-root ,.MuiPickersTextField-root{
+    width: 100% !important;
+  }
+
+  
+
+
+.MuiDataGrid-root {
+  background: transparent !important;
+}
+
+.MuiToolbar-root {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
 

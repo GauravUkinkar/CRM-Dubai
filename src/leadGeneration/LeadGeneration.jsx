@@ -1,106 +1,101 @@
 import React from 'react';
-import bgimg from "../assets/background.webp";
 import {
-    Box,
     TextField,
+    MenuItem,
+    Select,
+    InputLabel,
+    Box,
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    Radio,
+    RadioGroup,
+    Stack,
     Button,
-    Typography,
-    Grid,
-    useMediaQuery,
+    IconButton
 } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 
 const LeadGeneration = () => {
-    const currentDate = new Date().toISOString().split('T')[0];
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
     return (
-        <Box
-            sx={{
-                backgroundImage: `url(${bgimg})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                minHeight: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                px: 2,
-            }}
-        >
-            <Box
-                sx={{
-                    width: '100%',
-                    maxWidth: 600,
-                    bgcolor: 'white',
-                    p: 4,
-                    display: 'flex',
-                    flexDirection:"column",
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderRadius: 3,
-                    boxShadow: 3,
-                }}
-            >
-                <Typography variant="h5" gutterBottom textAlign="left" pb={2}>
-                    Lead Generation Form
-                </Typography>
+        <div className="fixed top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.5)] backdrop-blur-sm z-50 flex items-center justify-center">           
 
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                        <TextField fullWidth label="Company Name" variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField fullWidth label="Lead's Name" variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField fullWidth label="Email" type="email" variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField fullWidth label="Phone Number" type="tel" variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField fullWidth label="Reference" variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            fullWidth
-                            label="Date"
-                            type="date"
-                            defaultValue={currentDate}
-                            InputLabelProps={{ shrink: true }}
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField fullWidth label="Website URL" type="url" variant="outlined" />
-                    </Grid>
-                    
-                        <TextField
-                            fullWidth
-                            label="Feedback / Comments"
-                            variant="outlined"
-                            multiline
-                            rows={4}
-                        />                   
 
-                  
-                        <input type="hidden" name="entryDate" value={currentDate} />
-                        <Button
-                            variant="contained"
-                            fullWidth
-                            sx={{
-                                bgcolor: '#f57c00',
-                                '&:hover': { bgcolor: '#ef6c00' },
-                                mt: 1
-                            }}
-                        >
-                            Submit
-                        </Button>
-                   
-                </Grid>
-            </Box>
-        </Box>
+            <div className="bg-white w-[900px] max-h-[90vh] overflow-y-auto !px-8 !py-8 rounded-lg shadow-lg flex flex-col gap-6 ">
+                <h2 className="text-2xl font-semibold text-center">Lead Generation</h2>
+
+                <div className="gap-6 w-full grid grid-cols-2">
+                    {/* Form Fields */}
+                    <FormControl component="fieldset" fullWidth>
+                        <Stack direction="row" alignItems="center" spacing={2}>
+                            <FormLabel sx={{ fontSize: '16px' }}>Is it a Lead?</FormLabel>
+                            <RadioGroup row defaultValue="">
+                                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                                <FormControlLabel value="No" control={<Radio />} label="No" />
+                            </RadioGroup>
+                        </Stack>
+                    </FormControl>
+
+                    <TextField label="Date" type="date" InputLabelProps={{ shrink: true }} fullWidth />
+                    <TextField label="Entry Made By" fullWidth />
+                    <TextField label="BD Manager Name" fullWidth />
+                    <TextField label="Lead Generation Date" type="date" InputLabelProps={{ shrink: true }} fullWidth />
+                    <TextField label="Client Name" fullWidth />
+                    <TextField label="Contact Person" fullWidth />
+                    <TextField label="Email ID" fullWidth />
+                    <TextField label="Contact Number" fullWidth />
+                    <TextField label="Reference" fullWidth />
+                    <TextField label="Website" fullWidth />
+
+                    <FormControl fullWidth>
+                        <InputLabel>Status</InputLabel>
+                        <Select label="Status" defaultValue="">
+                            <MenuItem value="New">New</MenuItem>
+                            <MenuItem value="In Progress">In Progress</MenuItem>
+                            <MenuItem value="Closed">Closed</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl fullWidth>
+                        <InputLabel>Overall Status</InputLabel>
+                        <Select label="Overall Status" defaultValue="">
+                            <MenuItem value="Hot">Hot</MenuItem>
+                            <MenuItem value="Warm">Warm</MenuItem>
+                            <MenuItem value="Cold">Cold</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl fullWidth>
+                        <InputLabel>BD Manager Assigned</InputLabel>
+                        <Select label="BD Manager Assigned" defaultValue="">
+                            <MenuItem value="Manager A">Manager A</MenuItem>
+                            <MenuItem value="Manager B">Manager B</MenuItem>
+                            <MenuItem value="Manager C">Manager C</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <TextField label="Comments" fullWidth multiline rows={3} />
+                    <TextField label="Updated Status Comments" fullWidth />
+                    <TextField label="Date of Future Contact" type="date" InputLabelProps={{ shrink: true }} fullWidth />
+                    <TextField label="Initial Proposal Date" type="date" InputLabelProps={{ shrink: true }} fullWidth />
+                    <TextField label="Future Proposal Date" type="date" InputLabelProps={{ shrink: true }} fullWidth />
+
+                    <FormControl fullWidth>
+                        <InputLabel>Deleted Tag</InputLabel>
+                        <Select label="Deleted Tag" defaultValue="">
+                            <MenuItem value="true">True</MenuItem>
+                            <MenuItem value="false">False</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+
+                {/* Submit Button */}
+                <div className="flex justify-center mt-4 ">
+                    <Button variant="contained" color="primary">
+                        Submit
+                    </Button>
+                </div>
+            </div>
+        </div>
     );
 };
 
